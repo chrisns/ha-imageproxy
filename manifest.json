@@ -1,0 +1,12 @@
+{
+  "domain": "imageproxy",
+  "name": "imageproxy",
+  "documentation": "https://github.com/chrisns/ha-imageproxy",
+  "version": "v0.0.1",
+  "requirements": [
+  ],
+  "dependencies": ["http"],
+  "codeowners": [
+    "@chrisns"
+  ]
+}
