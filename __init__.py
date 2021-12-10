@@ -22,7 +22,7 @@ class imageproxy(HomeAssistantView):
         self.config = config
 
     async def get(self, request: web.Request, image: str) -> web.StreamResponse:
-        if not request[KEY_AUTHENTICATED] and request.query.get("token") in self.config['accesstokens']:
+        if not request[KEY_AUTHENTICATED] and request.query.get("token") not in self.config['accesstokens']:
             raise web.HTTPUnauthorized()
 
         try:

@@ -14,8 +14,8 @@ imageproxy:
     google: https://www.google.com/logos/doodles/2021/seasonal-holidays-2021-6753651837109324.3-ladc.gif
     googleagain: https://www.google.com/logos/doodles/2021/seasonal-holidays-2021-6753651837109324.3-ladc.gif
   accesstokens:
-    - bez!tvq9wdw5WZV8mny
-    - trw7czy_dhf.yub8XTP
+    - "bez!tvq9wdw5WZV8mny"
+    - "trw7czy_dhf.yub8XTP"
 ```
 
 restart home assistant
