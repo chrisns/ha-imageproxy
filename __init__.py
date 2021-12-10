@@ -11,12 +11,9 @@ DOMAIN = "imageproxy"
 
 
 def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Set up a skeleton component."""
     hass.http.register_view(imageproxy(config['imageproxy']))
 
 class imageproxy(HomeAssistantView):
-    """Camera view to serve an image."""
-
     url = "/imageproxy/{image}"
     name = "api:imageproxy:image"
     requires_auth = False
@@ -25,13 +22,12 @@ class imageproxy(HomeAssistantView):
         self.config = config
 
     async def get(self, request: web.Request, image: str) -> web.StreamResponse:
-
-        if not request[KEY_AUTHENTICATED] or request.query.get("token") in self.config.accesstokens:
+        if not request[KEY_AUTHENTICATED] and request.query.get("token") in self.config['accesstokens']:
             raise web.HTTPUnauthorized()
 
         try:
             async with ClientSession() as session:
-                async with session.get(self.config.resources[image]) as resp:
+                async with session.get(self.config['resources'][image]) as resp:
                     return web.Response(body=await resp.content.read(), content_type=resp.content_type)
         except Exception as e:
             _LOGGER.error(e)
